@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "PC",
+            "defines": [
+                "PC",
+                "MYON"
+            ],
+            "compilerPath": "C:\\Program Files\\Webots\\msys64\\mingw64\\bin\\gcc.exe",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "browse": {
+                "path": [
+                    "${workspaceFolder}/**"
+                ]
+            },
+            "cStandard": "gnu17",
+            "intelliSenseMode": "windows-gcc-x86"
+        }
+    ],
+    "version": 4
+}
