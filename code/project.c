@@ -10,16 +10,13 @@
 int16_t audio_0[1536000]; // stores 60 seconds of audio @ 25600 Hz, samples are 16 bit signed integers
 int16_t audio_1[1536000];
 int16_t audio_2[1536000];
-int16_t audio_3[1536000];
 
-uint32_t audio_length[4]; // the array entries store the amount of samples each file has
+uint32_t audio_length[3]; // the array entries store the amount of samples each file has
 
-char *filepath_0 = ""; // direct filename of audiofiles located in the "project" folder
-char *filepath_1 = "";
-char *filepath_2 = "";
-char *filepath_3 = "";
+char *filepath_0 = "project/no_01_person_1.wav"; // direct filename of audiofiles located in the "project" folder
+char *filepath_1 = "project/no_01_person_2.wav";
+char *filepath_2 = "project/no_01_person_3.wav";
 
-// Bemerkung: 9 von 10 Testdateien haben funktioniert. Reicht, da es ja um "Fehler überspiele" geht.
 
 int16_t absolute(int16_t value) {
     if (value > 0) return value;
@@ -33,7 +30,9 @@ char process_audio(int16_t *audio, int32_t audio_len) {
         if (absolute(audio[i]) > max)
             max = absolute(audio[i]);
     }
-//TODO: Amplitude normieren? -> double bzw. float
+
+    if (max > 20000) return 'Y';
+
     int threshold = 400;
     len = 0, pos_max = 0;
     for (int i = 0; i < audio_len; i++) {
@@ -70,24 +69,25 @@ void reply(char answer, int x) {
             "I hope 'yes' is the right answer."
         };
 
-        printf("%s ", answers[x]);
+        printf("%s\t", answers[x]);
     }
 }
+
 
 int project(void) {
     time_t t;
     srand((unsigned) time(&t));
-    int requests = rand() % 5;
-    
+    int requests = rand() % 5 % 3; // Gewichtung häufiger keiner oder einmal nachfragen als zweimal
 
-    filepath_0 = "yes_julian.wav";
+    int16_t* audio[3] = {audio_0, audio_1, audio_2};
 
-
-    for (int i = 0; i < requests % 3; i++) { // Gewichtung häufiger keiner oder einmal nachfragen als zweimal
-        reply(process_audio(audio_0, audio_length[0]), rand());
-        printf("Please repeat.\n");
+    for (int i = 0; i < requests; i++) {
+        printf("(I think it is '%c'.)\t", process_audio(audio_0, audio_length[0]));
+        reply(process_audio(audio[i], audio_length[i]), rand());
+        printf("Please repeat...\n");
     }
-        
-    printf("Solution: %c\n", process_audio(audio_0, audio_length[0]));
-    return process_audio(audio_0, audio_length[0]);
-}  
+    
+    // Endgültige Entscheidung nur nach dem letzten Input
+    printf("Aaah, '%c'. Okay!\n", process_audio(audio[requests], audio_length[requests]));
+    return process_audio(audio[requests], audio_length[requests]);
+}

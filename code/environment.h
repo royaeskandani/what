@@ -21,14 +21,12 @@ union wav_file {
 extern int16_t audio_0[1536000];
 extern int16_t audio_1[1536000];
 extern int16_t audio_2[1536000];
-extern int16_t audio_3[1536000];
 
-extern uint32_t audio_length[4];
+extern uint32_t audio_length[3];
 
 extern char *filepath_0;
 extern char *filepath_1;
 extern char *filepath_2;
-extern char *filepath_3;
 
 #define SWITCH_ENDIAN_32(x) ((0x000000FF & (x)) << 24) | ((0x0000FF00 & (x)) << 8) | ((0x00FF0000 & (x)) >> 8) | ((0xFF000000 & (x)) >> 24)
 

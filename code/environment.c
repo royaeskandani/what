@@ -1,8 +1,8 @@
 #include "environment.h"
 
 FILE *fp;
-char *audiofile_path[30];
-int16_t *audiobuffer_pointer[30];
+char *audiofile_path[3];
+int16_t *audiobuffer_pointer[3];
 union wav_file read_buffer;
 union wav_file write_buffer;
 uint8_t wav_header[44] = {0x52, 0x49, 0x46, 0x46, 0x00, 0x00, 0x00, 0x00, 0x57, 0x41, 0x56, 0x45, 0x66, 0x6D, 0x74, 0x20, 0x10, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0xC8, 0x00, 0x00, 0x02, 0x00, 0x10, 0x00, 0x64, 0x61, 0x74, 0x61, 0x00, 0x00, 0x00, 0x00};
@@ -30,14 +30,12 @@ int main(int argc, char *argv[]) {
     audiofile_path[0] = filepath_0; // assign pointers of user defined filename strings to array of pointers
     audiofile_path[1] = filepath_1;
     audiofile_path[2] = filepath_2;
-    audiofile_path[3] = filepath_3;
 
     audiobuffer_pointer[0] = audio_0; // assign pointers to audio sample arrays to array of pointers
     audiobuffer_pointer[1] = audio_1;
     audiobuffer_pointer[2] = audio_2;
-    audiobuffer_pointer[3] = audio_3;
 
-    for (uint32_t i = 0; i < 4; ++i) {
+    for (uint32_t i = 0; i < 3; ++i) {
         fp = fopen(audiofile_path[i], "rb"); // open file in binary read mode
 
         if (fp) {
@@ -57,7 +55,7 @@ int main(int argc, char *argv[]) {
                     for (uint32_t j = 0; j < audio_length[i]; ++j) *pointer++ = read_buffer.wav_fields.samples[j]; // take only the audio samples from the temporary file buffer and write them to a sample array
                     
 
-                    printf("file %d \"%s\" ok: file length is %d samples\n", i, audiofile_path[i], audio_length[i]);
+                    // printf("file %d \"%s\" ok: file length is %d samples\n", i, audiofile_path[i], audio_length[i]);
                 }
             } else {
                 printf("file %d \"%s\" error: file is empty or not a valid .wav file\n", i, audiofile_path[i]);

@@ -1,0 +1,157 @@
+
+Audiofile: project/no_01_person_1.wav
+	maximum: 2588
+	absolute position: 3496
+	Solution: N
+
+Audiofile: project/no_01_person_2.wav
+	maximum: 9039
+	absolute position: 1838
+	Solution: N
+
+Audiofile: project/no_01_person_3.wav
+	maximum: 8645
+	absolute position: 2505
+	Solution: N
+
+Audiofile: project/no_01_person_4.wav
+	maximum: 7045
+	absolute position: 2563
+	Solution: N
+
+Audiofile: project/no_01_person_5.wav
+	maximum: 10348
+	absolute position: 9699
+	Solution: N
+
+Audiofile: project/no_01_person_6.wav
+	maximum: 4795
+	absolute position: 931
+	Solution: Y
+
+Audiofile: project/no_02_person_1.wav
+	maximum: 1632
+	absolute position: 2690
+	Solution: N
+
+Audiofile: project/no_02_person_2.wav
+	maximum: 9334
+	absolute position: 2122
+	Solution: N
+
+Audiofile: project/no_02_person_3.wav
+	maximum: 7730
+	absolute position: 3008
+	Solution: N
+
+Audiofile: project/no_02_person_4.wav
+	maximum: 6466
+	absolute position: 3594
+	Solution: N
+
+Audiofile: project/no_02_person_5.wav
+	maximum: 15498
+	absolute position: 3544
+	Solution: N
+
+Audiofile: project/no_02_person_6.wav
+	maximum: 8488
+	absolute position: 9961
+	Solution: N
+
+Audiofile: project/no_03_person_1.wav
+	maximum: 2986
+	absolute position: 625
+	Solution: Y
+
+Audiofile: project/no_03_person_4.wav
+	maximum: 16319
+	absolute position: 2741
+	Solution: N
+
+Audiofile: project/no_03_person_5.wav
+	maximum: 4537
+	absolute position: 5717
+	Solution: N
+
+Audiofile: project/no_03_person_6.wav
+	maximum: 4338
+	absolute position: 2631
+	Solution: N
+
+Audiofile: project/yes_01_person_1.wav
+	maximum: 1738
+	absolute position: 1115
+	Solution: Y
+
+Audiofile: project/yes_01_person_2.wav
+	maximum: 7661
+	absolute position: 1255
+	Solution: Y
+
+Audiofile: project/yes_01_person_3.wav
+	maximum: 4456
+	absolute position: 2070
+	Solution: N
+
+Audiofile: project/yes_01_person_4.wav
+	maximum: 21162
+	Solution: Y
+
+Audiofile: project/yes_01_person_5.wav
+	maximum: 27119
+	Solution: Y
+
+Audiofile: project/yes_01_person_6.wav
+	maximum: 18361
+	absolute position: 1130
+	Solution: Y
+
+Audiofile: project/yes_02_person_1.wav
+	maximum: 3179
+	absolute position: 1615
+	Solution: Y
+
+Audiofile: project/yes_02_person_2.wav
+	maximum: 11224
+	absolute position: 2483
+	Solution: N
+
+Audiofile: project/yes_02_person_3.wav
+	maximum: 6442
+	absolute position: 1408
+	Solution: Y
+
+Audiofile: project/yes_02_person_4.wav
+	maximum: 13856
+	absolute position: 3108
+	Solution: N
+
+Audiofile: project/yes_02_person_5.wav
+	maximum: 27708
+	Solution: Y
+
+Audiofile: project/yes_02_person_6.wav
+	maximum: 9864
+	absolute position: 619
+	Solution: Y
+
+Audiofile: project/yes_03_person_1.wav
+	maximum: 2119
+	absolute position: 1787
+	Solution: Y
+
+Audiofile: project/yes_03_person_4.wav
+	maximum: 11513
+	absolute position: 1625
+	Solution: Y
+
+Audiofile: project/yes_03_person_5.wav
+	maximum: 3472
+	absolute position: 1261
+	Solution: Y
+
+Audiofile: project/yes_03_person_6.wav
+	maximum: 7291
+	absolute position: 549
+	Solution: Y
