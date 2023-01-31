@@ -8,6 +8,13 @@
 
 #include "project.h"
 
+// Framework: System of linear equations
+typedef struct linearsystem {
+    float* A;
+    int* b;
+} linearsystem;
+
+// Framework: WAV files
 union wav_file {
     struct wav_fields {
         uint8_t header[4];
@@ -15,7 +22,7 @@ union wav_file {
         uint8_t more_header[32];
         uint32_t size_b;
         int16_t samples[1536000];
-    };
+    } wav_fields;
     uint8_t bytes[3072044];
 };
 

@@ -5,4 +5,4 @@
 gcc -Wall -O0 code/*.c -o project/_project -D PC
 ./project/_project
 
-# ./project/_project > _data.txt
+#./project/_project > dataset.txt

@@ -13,11 +13,11 @@ void save_audiofile(char *filename, uint8_t id, uint32_t length) {
     for (uint32_t i = 0; i < 44; ++i) write_buffer.bytes[i] = wav_header[i]; // copy over the header
 
     uint32_t bytes_to_write = (length * 2) + 44; // 2 bytes per sample plus 44 bytes header
-    write_buffer.size_a = bytes_to_write - 8;
-    write_buffer.size_b = bytes_to_write - 44;
+    write_buffer.wav_fields.size_a = bytes_to_write - 8;
+    write_buffer.wav_fields.size_b = bytes_to_write - 44;
 
     int16_t *pointer = audiobuffer_pointer[id];
-    for (uint32_t i = 0; i < length; ++i) write_buffer.samples[i] = *pointer++;
+    for (uint32_t i = 0; i < length; ++i) write_buffer.wav_fields.samples[i] = *pointer++;
 
     fp = fopen(filename, "wb");
     fwrite(write_buffer.bytes, 1, bytes_to_write, fp);
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
                 } else {
                     audio_length[i] = (file_length - 44) / 2; // minus 44 header bytes, two bytes equal one sample
                     int16_t *pointer = audiobuffer_pointer[i];
-                    for (uint32_t j = 0; j < audio_length[i]; ++j) *pointer++ = read_buffer.samples[j]; // take only the audio samples from the temporary file buffer and write them to a sample array
+                    for (uint32_t j = 0; j < audio_length[i]; ++j) *pointer++ = read_buffer.wav_fields.samples[j]; // take only the audio samples from the temporary file buffer and write them to a sample array
 
                     printf("file %d \"%s\" ok: file length is %d samples\n", i, audiofile_path[i], audio_length[i]);
                 }
