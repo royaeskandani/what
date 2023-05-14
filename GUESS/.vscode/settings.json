@@ -1,0 +1,10 @@
+{
+  "files.associations": {
+    "*.py": "python",
+    "environment.h": "c",
+    "*.txt": "c",
+    "stdlib.h": "c",
+    "stdio.h": "c"
+  },
+  "C_Cpp.errorSquiggles": "Disabled"
+}

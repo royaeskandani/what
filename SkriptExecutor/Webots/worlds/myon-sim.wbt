@@ -1,0 +1,639 @@
+#VRML_SIM R2022b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/appearances/protos/OldPlywood.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/toys/protos/RubberDuck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2022b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+
+WorldInfo {
+  basicTimeStep 10
+}
+Viewpoint {
+  orientation -0.08905599534371875 0.7874827005308591 0.6098688597214689 0.3666997007053244
+  position -0.6088262295546112 -3.978960418414023 1.6919082004065464
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RubberDuck {
+  translation 2.56 -3.47 0.81
+  rotation 0 0 1 -2.6179953071795863
+}
+Solid {
+  translation 2.25 -3.42 0.765
+  children [
+    DEF Plate Shape {
+      appearance OldPlywood {
+      }
+      geometry Box {
+        size 1 0.25 0.05
+      }
+    }
+  ]
+  name "Plank"
+  boundingObject USE Plate
+}
+Robot {
+  translation 1.83 -3.42 1.05
+  children [
+    DEF Torso_A CadShape {
+      url [
+        "Myon-CAD/Torso_A.obj"
+      ]
+    }
+    DEF Torso_B CadShape {
+      url [
+        "Myon-CAD/Torso_B.obj"
+      ]
+    }
+    DEF Torso_B_Inv CadShape {
+      url [
+        "Myon-CAD/Torso_B.obj"
+      ]
+      ccw FALSE
+    }
+    DEF Kopf Transform {
+      translation 0 0 0.10141
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+          }
+          device [
+            PositionSensor {
+              name "HPitch_Pos"
+            }
+            RotationalMotor {
+              name "HPitch_Mot"
+              maxVelocity 1
+            }
+          ]
+          endPoint Solid {
+            translation 0.005 0 0
+            rotation 0 1 0 0
+            children [
+              DEF Hals-Pitch CadShape {
+                url [
+                  "Myon-CAD/Hals-Pitch.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis 0 0 1
+                }
+                device [
+                  PositionSensor {
+                    name "HYaw_Pos"
+                  }
+                  RotationalMotor {
+                    name "HYaw_Mot"
+                    maxVelocity 1
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0 0.0458
+                  children [
+                    DEF Hals-Yaw CadShape {
+                      url [
+                        "Myon-CAD/Hals-Yaw.obj"
+                      ]
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                      }
+                      device [
+                        PositionSensor {
+                          name "HRoll_Pos"
+                        }
+                        RotationalMotor {
+                          name "HRoll_Mot"
+                          maxVelocity 1
+                        }
+                      ]
+                      endPoint Solid {
+                        rotation 1 0 0 0
+                        children [
+                          DEF Kopf_A CadShape {
+                            url [
+                              "Myon-CAD/Kopf_A.obj"
+                            ]
+                          }
+                          DEF Kopf_B CadShape {
+                            url [
+                              "Myon-CAD/Kopf_B.obj"
+                            ]
+                          }
+                          DEF Kopf_B_Inv CadShape {
+                            url [
+                              "Myon-CAD/Kopf_B.obj"
+                            ]
+                            ccw FALSE
+                          }
+                        ]
+                        name "Kopf"
+                        boundingObject Mesh {
+                          url [
+                            "Myon-CAD/Kopf_B.obj"
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.1
+                          centerOfMass [
+                            0 0 0
+                          ]
+                          inertiaMatrix [
+                            0.0001 0.0001 0.0001
+                            0 0 0
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                  name "Hals-Yaw"
+                  boundingObject Mesh {
+                    url [
+                      "Myon-CAD/Hals-Yaw.obj"
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                    centerOfMass [
+                      0 0 0
+                    ]
+                    inertiaMatrix [
+                      0.0001 0.0001 0.0001
+                      0 0 0
+                    ]
+                  }
+                }
+              }
+            ]
+            name "Hals_Pitch"
+            boundingObject Mesh {
+              url [
+                "Myon-CAD/Hals-Pitch.obj"
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.1
+              centerOfMass [
+                0 0 0
+              ]
+              inertiaMatrix [
+                0.0001 0.0001 0.0001
+                0 0 0
+              ]
+            }
+          }
+        }
+      ]
+    }
+    DEF ArmL Transform {
+      translation 0 -0.19538 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+          }
+          device [
+            PositionSensor {
+              name "LPitch_Pos"
+            }
+            RotationalMotor {
+              name "LPitch_Mot"
+              maxVelocity 1
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 -0.01
+            rotation 0 1 0 0
+            children [
+              DEF SchulterL_A CadShape {
+                url [
+                  "Myon-CAD/SchulterL_A.obj"
+                ]
+              }
+              DEF SchulterL_B CadShape {
+                url [
+                  "Myon-CAD/SchulterL_B.obj"
+                ]
+                ccw FALSE
+              }
+              DEF SchulterL_B_Inv CadShape {
+                url [
+                  "Myon-CAD/SchulterL_B.obj"
+                ]
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                  axis -1 0 0
+                }
+                device [
+                  PositionSensor {
+                    name "LRoll_Pos"
+                  }
+                  RotationalMotor {
+                    name "LRoll_Mot"
+                    maxVelocity 1
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0 -0.215
+                  rotation -1 0 0 0
+                  children [
+                    DEF OberarmL_A CadShape {
+                      url [
+                        "Myon-CAD/OberarmL_A.obj"
+                      ]
+                    }
+                    DEF OberarmL_B CadShape {
+                      url [
+                        "Myon-CAD/OberarmL_B.obj"
+                      ]
+                    }
+                    DEF OberarmL_B_Inv CadShape {
+                      url [
+                        "Myon-CAD/OberarmL_B.obj"
+                      ]
+                      ccw FALSE
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 1 0
+                      }
+                      device [
+                        PositionSensor {
+                          name "LElbow_Pos"
+                        }
+                        RotationalMotor {
+                          name "LElbow_Mot"
+                          maxVelocity 1
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0 0 -0.18270000000000003
+                        rotation 0 1 0 0
+                        children [
+                          DEF UnterarmL_A CadShape {
+                            url [
+                              "Myon-CAD/UnterarmL_A.obj"
+                            ]
+                          }
+                          DEF UnterarmL_B CadShape {
+                            url [
+                              "Myon-CAD/UnterarmL_B.obj"
+                            ]
+                          }
+                          DEF UnterarmL_B_Inv CadShape {
+                            url [
+                              "Myon-CAD/UnterarmL_B.obj"
+                            ]
+                            ccw FALSE
+                          }
+                          HingeJoint {
+                            jointParameters HingeJointParameters {
+                              axis 0 0 1
+                            }
+                            device [
+                              PositionSensor {
+                                name "LWrist_Pos"
+                              }
+                              RotationalMotor {
+                                name "LWrist_Mot"
+                                maxVelocity 1
+                              }
+                            ]
+                            endPoint Solid {
+                              children [
+                                DEF HandL CadShape {
+                                  url [
+                                    "Myon-CAD/HandL.obj"
+                                  ]
+                                }
+                              ]
+                              name "HandL"
+                              boundingObject Mesh {
+                                url [
+                                  "Myon-CAD/HandL.obj"
+                                ]
+                              }
+                              physics Physics {
+                                density -1
+                                mass 0.1
+                                centerOfMass [
+                                  0 0 0
+                                ]
+                                inertiaMatrix [
+                                  0.0001 0.0001 0.0001
+                                  0 0 0
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                        name "UnterarmL"
+                        boundingObject Mesh {
+                          url [
+                            "Myon-CAD/UnterarmL_B.obj"
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.1
+                          centerOfMass [
+                            0 0 0
+                          ]
+                          inertiaMatrix [
+                            0.0001 0.0001 0.0001
+                            0 0 0
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                  name "OberarmL"
+                  boundingObject Mesh {
+                    url [
+                      "Myon-CAD/OberarmL_B.obj"
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                    centerOfMass [
+                      0 0 0
+                    ]
+                    inertiaMatrix [
+                      0.0001 0.0001 0.0001
+                      0 0 0
+                    ]
+                  }
+                }
+              }
+            ]
+            name "SchulterL"
+            boundingObject Mesh {
+              url [
+                "Myon-CAD/SchulterL_B.obj"
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.1
+              centerOfMass [
+                0 0 0
+              ]
+              inertiaMatrix [
+                0.0001 0.0001 0.0001
+                0 0 0
+              ]
+            }
+          }
+        }
+      ]
+    }
+    DEF ArmR Transform {
+      translation 0 0.19538 0
+      children [
+        HingeJoint {
+          jointParameters HingeJointParameters {
+            axis 0 1 0
+          }
+          device [
+            PositionSensor {
+              name "RPitch_Pos"
+            }
+            RotationalMotor {
+              name "RPitch_Mot"
+              maxVelocity 1
+            }
+          ]
+          endPoint Solid {
+            translation 0 0 -0.01
+            rotation 0 1 0 0
+            children [
+              DEF SchulterL_A CadShape {
+                url [
+                  "Myon-CAD/SchulterR_A.obj"
+                ]
+              }
+              DEF SchulterL_B CadShape {
+                url [
+                  "Myon-CAD/SchulterR_B.obj"
+                ]
+              }
+              DEF SchulterL_B_Inv CadShape {
+                url [
+                  "Myon-CAD/SchulterR_B.obj"
+                ]
+                ccw FALSE
+              }
+              HingeJoint {
+                jointParameters HingeJointParameters {
+                }
+                device [
+                  PositionSensor {
+                    name "RRoll_Pos"
+                  }
+                  RotationalMotor {
+                    name "RRoll_Mot"
+                    maxVelocity 1
+                  }
+                ]
+                endPoint Solid {
+                  translation 0 0 -0.215
+                  rotation 1 0 0 0
+                  children [
+                    DEF OberarmR_A CadShape {
+                      url [
+                        "Myon-CAD/OberarmR_A.obj"
+                      ]
+                    }
+                    DEF OberarmR_B CadShape {
+                      url [
+                        "Myon-CAD/OberarmR_B.obj"
+                      ]
+                    }
+                    DEF OberarmR_B_Inv CadShape {
+                      url [
+                        "Myon-CAD/OberarmR_B.obj"
+                      ]
+                      ccw FALSE
+                    }
+                    HingeJoint {
+                      jointParameters HingeJointParameters {
+                        axis 0 1 0
+                      }
+                      device [
+                        PositionSensor {
+                          name "RElbow_Pos"
+                        }
+                        RotationalMotor {
+                          name "RElbow_Mot"
+                          maxVelocity 1
+                        }
+                      ]
+                      endPoint Solid {
+                        translation 0 0 -0.1827
+                        rotation 0 1 0 0
+                        children [
+                          DEF UnterarmR_A CadShape {
+                            url [
+                              "Myon-CAD/UnterarmR_A.obj"
+                            ]
+                          }
+                          DEF UnterarmR_B CadShape {
+                            url [
+                              "Myon-CAD/UnterarmR_B.obj"
+                            ]
+                          }
+                          DEF UnterarmR_B_Inv CadShape {
+                            url [
+                              "Myon-CAD/UnterarmR_B.obj"
+                            ]
+                            ccw FALSE
+                          }
+                          HingeJoint {
+                            jointParameters HingeJointParameters {
+                              axis 0 0 -1
+                            }
+                            device [
+                              PositionSensor {
+                                name "RWrist_Pos"
+                              }
+                              RotationalMotor {
+                                name "RWrist_Mot"
+                                maxVelocity 1
+                              }
+                            ]
+                            endPoint Solid {
+                              rotation 0 0 -1 0
+                              children [
+                                DEF HandR CadShape {
+                                  url [
+                                    "Myon-CAD/HandR.obj"
+                                  ]
+                                }
+                              ]
+                              name "HandR"
+                              boundingObject Mesh {
+                                url [
+                                  "Myon-CAD/HandR.obj"
+                                ]
+                              }
+                              physics Physics {
+                                density -1
+                                mass 0.1
+                                centerOfMass [
+                                  0 0 0
+                                ]
+                                inertiaMatrix [
+                                  0.0001 0.0001 0.0001
+                                  0 0 0
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                        name "UnterarmR"
+                        boundingObject Mesh {
+                          url [
+                            "Myon-CAD/UnterarmR_B.obj"
+                          ]
+                        }
+                        physics Physics {
+                          density -1
+                          mass 0.1
+                          centerOfMass [
+                            0 0 0
+                          ]
+                          inertiaMatrix [
+                            0.0001 0.0001 0.0001
+                            0 0 0
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                  name "OberarmR"
+                  boundingObject Mesh {
+                    url [
+                      "Myon-CAD/OberarmR_B.obj"
+                    ]
+                  }
+                  physics Physics {
+                    density -1
+                    mass 0.1
+                    centerOfMass [
+                      0 0 0
+                    ]
+                    inertiaMatrix [
+                      0.0001 0.0001 0.0001
+                      0 0 0
+                    ]
+                  }
+                }
+              }
+            ]
+            name "SchulterR"
+            boundingObject Mesh {
+              url [
+                "Myon-CAD/SchulterR_B.obj"
+              ]
+            }
+            physics Physics {
+              density -1
+              mass 0.1
+              centerOfMass [
+                0 0 0
+              ]
+              inertiaMatrix [
+                0.0001 0.0001 0.0001
+                0 0 0
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+  name "Myon"
+  boundingObject Group {
+    children [
+      Transform {
+        translation 0 0 -0.21129
+        children [
+          Box {
+            size 0.2 0.2 0.1
+          }
+        ]
+      }
+      Mesh {
+        url [
+          "Myon-CAD/Torso_B.obj"
+        ]
+      }
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 10
+    centerOfMass [
+      0 0 -0.09999999999999999
+    ]
+    inertiaMatrix [
+      0.22500000000000003 0.16500000000000004 0.07500000000000001
+      0 0 0
+    ]
+  }
+  controller "myon-controller"
+}
+CadShape {
+  url [
+    "Labor_Unten/finalblend.dae"
+  ]
+}

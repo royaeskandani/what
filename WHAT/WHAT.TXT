@@ -1,0 +1,23 @@
+
+[Intro] INTRO.WAV "Hey My name is Fi. I'm a robot and THE best listener of the world!"
+
+[Question] QUESTION.WAV "What about you? Are you also good at listening?"
+WAIT.WAV
+
+{ ascii 0 LastKey ! }
+[Repeat] REPEAT.WAV "Huh? Whaaaat? Sorry. I didn't pay attention. Could you repeat your answer, please?"
+?INPUT.WAV
+GUESS.EXE
+
+[Answer] 
+Y) ANSWERY.WAV "Aaaah. Okay. You are like me. I like that."
+N) ANSWERN.WAV "Too bad. Maybe with some practice you'll get better."
+0) =>Repeat
+
+{ ascii 0 LastKey ! }
+[Update] UPDATE.WAV "To improve my skills... could you type 'y' if you are or 'n' if you aren't a good listener?"
+y) YES.EXE
+n) NO.EXE
+0) =>Extro
+
+[Extro] EXTRO.WAV "Thank you for your collaboration."

@@ -1,0 +1,16 @@
+#
+# Bunkspeed OBJ Material File
+# http://www.bunkspeed.com
+#
+
+newmtl color
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
+
+newmtl color
+Kd 1 1 1
+Ks 0.5 0.5 0.5
+illum 2
+Ns 99.90109
